@@ -11,6 +11,8 @@ import static org.junit.Assert.assertEquals;
 
 public class SendAppPage extends BasePage {
 
+    @FindBy(xpath = "//*[@class='page container']")
+    WebElement pageContainer;
 
     @FindBy(id = "person_lastName")
     WebElement lastName;
@@ -57,10 +59,6 @@ public class SendAppPage extends BasePage {
     @FindBy(xpath = "//*[contains(text(), 'Продолжить')]")
     public WebElement sendButton;
 
-    public WebElement getSendButton() {
-        return sendButton;
-    }
-
 
     public SendAppPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -72,12 +70,12 @@ public class SendAppPage extends BasePage {
             if ("Фамилия застрахованного".equals(fieldName)) { fillField(surnameIns, value); }
             if ("Имя застрахованного".equals(fieldName)) { fillField(nameIns, value); }
             if ("Имя страхователя".equals(fieldName)) { fillField(firstName, value); }
-            if ("Дата рождения застрахованного".equals(fieldName)) { fillField(birthDateIns, value); }
+            if ("Дата рождения застрахованного".equals(fieldName)) { fillField(birthDateIns, value); pageContainer.click();}
             if ("Отчество страхователя".equals(fieldName)) { fillField(middleName, value); }
-            if ("Дата рождения страхователя".equals(fieldName)) { fillField(birthDate, value); }
+            if ("Дата рождения страхователя".equals(fieldName)) { fillField(birthDate, value); pageContainer.click();}
             if ("Серия паспорта".equals(fieldName)) { fillField(passportSeries, value); }
             if ("Номер паспорта".equals(fieldName)) { fillField(passportNumber, value); }
-            if ("Когда выдан".equals(fieldName)) { fillField(documentDate, value); }
+            if ("Когда выдан".equals(fieldName)) { fillField(documentDate, value); pageContainer.click();}
             if ("Фамилия страхователя".equals(fieldName)) { fillField(lastName, value); }
             if ("Кем выдан".equals(fieldName)) { fillField(documentIssue, value); }
         } catch (Exception e) {
@@ -85,41 +83,57 @@ public class SendAppPage extends BasePage {
         }
     }
 
-    public String getFillField(String fieldName){
+    public void getFillField(String fieldName, String value){
+        try {
             if ("Фамилия застрахованного".equals(fieldName)) {
-                return surnameIns.getAttribute("value");
+                //return surnameIns.getAttribute("value");
+                assertEquals(value, surnameIns.getAttribute("value"));
             }
+
             if ("Имя".equals(fieldName)) {
-                return nameIns.getAttribute("value");
+                //return nameIns.getAttribute("value");
+                assertEquals(value, nameIns.getAttribute("value"));
             }
+
             if ("Дата рождения застрахованного".equals(fieldName)) {
-                return birthDateIns.getAttribute("value");
+                //return birthDateIns.getAttribute("value");
+                assertEquals(value, birthDateIns.getAttribute("value"));
             }
             if ("Имя страхователя".equals(fieldName)) {
-                return firstName.getAttribute("value");
+                //return firstName.getAttribute("value");
+                assertEquals(value, firstName.getAttribute("value"));
             }
             if ("Дата рождения страхователя".equals(fieldName)) {
-                return birthDate.getAttribute("value");
+                //return birthDate.getAttribute("value");
+                assertEquals(value, birthDate.getAttribute("value"));
             }
             if ("Отчество страхователя".equals(fieldName)) {
-                return middleName.getAttribute("value");
+                //return middleName.getAttribute("value");
+                assertEquals(value, middleName.getAttribute("value"));
             }
             if ("Серия паспорта".equals(fieldName)) {
-                return passportSeries.getAttribute("value");
+                //return passportSeries.getAttribute("value");
+                assertEquals(value, passportSeries.getAttribute("value"));
             }
             if ("Номер паспорта".equals(fieldName)) {
-                return passportNumber.getAttribute("value");
+                //return passportNumber.getAttribute("value");
+                assertEquals(value, passportNumber.getAttribute("value"));
             }
             if ("Фамилия страхователя".equals(fieldName)) {
-                return lastName.getAttribute("value");
+                //return lastName.getAttribute("value");
+                assertEquals(value, lastName.getAttribute("value"));
             }
             if ("Когда выдан".equals(fieldName)) {
-                return documentDate.getAttribute("value");
+                //return documentDate.getAttribute("value");
+                assertEquals(value, documentDate.getAttribute("value"));
             }
             if ("Кем выдан".equals(fieldName)) {
-                return documentIssue.getAttribute("value");
+                //return documentIssue.getAttribute("value");
+                assertEquals(value, documentIssue.getAttribute("value"));
             }
-            throw new AssertionError("Поле '" + fieldName + "' не объявлено на странице");
+        }catch (Exception e) {
+            new AssertionError("Поле '" + fieldName + "' не объявлено на странице");
+        }
     }
 
 
@@ -136,4 +150,5 @@ public class SendAppPage extends BasePage {
         }
 
     }
+
 }

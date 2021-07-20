@@ -2,6 +2,7 @@ package Task2;
 
 import org.junit.Test;
 import Task2.pages.*;
+
 import static org.junit.Assert.assertTrue;
 
 public class MyRefactoringTest extends BaseTest{
@@ -13,7 +14,7 @@ public class MyRefactoringTest extends BaseTest{
         mainPage.selectMainMenu("Страхование");
         mainPage.selectSubMenu("Путешествия");
 
-        ClickOnlineButtonPage clickOnlineButtonPage = new ClickOnlineButtonPage(driver);
+        ClickButtonPage clickOnlineButtonPage = new ClickButtonPage(driver);
 
         String actualTitle = clickOnlineButtonPage.title.getText();
         String expectedTitle = "Страхование путешественников";
@@ -22,7 +23,6 @@ public class MyRefactoringTest extends BaseTest{
 
         OptionsInsurancePage optionInsurancePage = new OptionsInsurancePage(driver);
         optionInsurancePage.selectType("Минимальная");
-        //optionInsurancePage.sendButton.click();
         optionInsurancePage.sendButton("Оформить");
 
         SendAppPage sendAppPage = new SendAppPage(driver);
@@ -35,21 +35,22 @@ public class MyRefactoringTest extends BaseTest{
         sendAppPage.fillField("Дата рождения страхователя", "05.09.1978");
         sendAppPage.fillField("Серия паспорта", "3402");
         sendAppPage.fillField("Номер паспорта", "231209");
-        sendAppPage.fillField("Кем выдан", "отделом УФМС России");
         sendAppPage.fillField("Когда выдан", "15.09.2000");
+        sendAppPage.fillField("Кем выдан", "отделом УФМС России");
         sendAppPage.male.click();
 
-        sendAppPage.getFillField("Прохоров");
-        sendAppPage.getFillField("Петр");
-        sendAppPage.getFillField("01.07.1980");
-        sendAppPage.getFillField("Кротов");
-        sendAppPage.getFillField("Олег");
-        sendAppPage.getFillField("Юрьевич");
-        sendAppPage.getFillField("05.09.1978");
-        sendAppPage.getFillField("3402");
-        sendAppPage.getFillField("231209");
-        sendAppPage.getFillField("отделом УФМС России");
-        sendAppPage.getFillField("15.09.2000");
+
+        sendAppPage.getFillField("Фамилия застрахованного", "Прохоров");
+        sendAppPage.getFillField("Имя застрахованного", "Петр");
+        sendAppPage.getFillField("Дата рождения застрахованного", "01.07.1980");
+        sendAppPage.getFillField("Фамилия страхователя", "Кротов");
+        sendAppPage.getFillField("Имя страхователя", "Олег");
+        sendAppPage.getFillField("Отчество страхователя", "Юрьевич");
+        sendAppPage.getFillField("Дата рождения страхователя", "05.09.1978");
+        sendAppPage.getFillField("Серия паспорта", "3402");
+        sendAppPage.getFillField("Номер паспорта", "231209");
+        sendAppPage.getFillField("Когда выдан", "15.09.2000");
+        sendAppPage.getFillField("Кем выдан", "отделом УФМС России");
 
         sendAppPage.sendButton.click();
 
@@ -57,4 +58,5 @@ public class MyRefactoringTest extends BaseTest{
         sendAppPage.checkFieldErrorMessage("Электронная почта", "Поле не заполнено.");
         sendAppPage.checkFieldErrorMessage("Повтор электронной почты", "Поле не заполнено.");
     }
+
 }
