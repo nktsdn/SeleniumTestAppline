@@ -31,6 +31,7 @@ public class SberInsuranceTest extends BaseSteps {
         personInfo.put("Дата выдачи", "15.09.2000");
         personInfo.put("Кем выдан", "отделом УФМС России");
 
+        //mainPageSteps.waitSendAppClickable();
         mainPageSteps.selectMainMenu("Страхование");
         mainPageSteps.selectSubMenu("Путешествия");
         mainPageSteps.waitSendAppClickable();

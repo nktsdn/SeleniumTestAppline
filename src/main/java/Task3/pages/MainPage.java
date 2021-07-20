@@ -1,5 +1,6 @@
 package Task3.pages;
 
+import Task3.steps.BaseSteps;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,8 +31,7 @@ public class MainPage extends BasePage {
 
     public void waitSendAppClickable(){
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
-        wait.until(ExpectedConditions.visibilityOf(
-                driver.findElement(By.xpath("//*[contains(text(), 'Закрыть')][contains(@class,'cookie')]")))).click();
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(), 'Закрыть')][contains(@class,'cookie')]")))).click();
     }
 
 }

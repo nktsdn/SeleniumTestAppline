@@ -2,7 +2,7 @@ package Task3.steps;
 
 import Task3.TestProperties;
 import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,18 +16,20 @@ public class BaseSteps {
     protected static String baseUrl;
     public static Properties properties = TestProperties.getInstance().getProperties();
 
-    @BeforeClass
-    public static void setUp() throws Exception {
+    public static WebDriver getDriver(){
+        return driver;
+    }
+
+    @Before
+    public void setUp() throws Exception {
         String browser = properties.getProperty("browser");
         if ("firefox".equals(browser)) {
             System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
             driver = new FirefoxDriver();
-        } else if ("chrome".equals(browser)) {
+        }
+        if ("chrome".equals(browser)) {
             System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
             driver = new ChromeDriver();
-        } else {
-            System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
-            driver = new FirefoxDriver();
         }
         System.setProperty("app.url", properties.getProperty("app.url"));
         baseUrl = properties.getProperty("app.url");
