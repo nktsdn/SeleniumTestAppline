@@ -123,7 +123,7 @@ public class SendAppPage extends BasePage {
                 //return lastName.getAttribute("value");
                 assertEquals(value, lastName.getAttribute("value"));
             }
-            if ("Когда выдан".equals(fieldName)) {
+            if ("Дата выдачи".equals(fieldName)) {
                 //return documentDate.getAttribute("value");
                 assertEquals(value, documentDate.getAttribute("value"));
             }

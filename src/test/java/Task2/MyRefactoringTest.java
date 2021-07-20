@@ -35,7 +35,7 @@ public class MyRefactoringTest extends BaseTest{
         sendAppPage.fillField("Дата рождения страхователя", "05.09.1978");
         sendAppPage.fillField("Серия паспорта", "3402");
         sendAppPage.fillField("Номер паспорта", "231209");
-        sendAppPage.fillField("Когда выдан", "15.09.2000");
+        sendAppPage.fillField("Дата выдачи", "15.09.2000");
         sendAppPage.fillField("Кем выдан", "отделом УФМС России");
         sendAppPage.male.click();
 
@@ -49,7 +49,7 @@ public class MyRefactoringTest extends BaseTest{
         sendAppPage.getFillField("Дата рождения страхователя", "05.09.1978");
         sendAppPage.getFillField("Серия паспорта", "3402");
         sendAppPage.getFillField("Номер паспорта", "231209");
-        sendAppPage.getFillField("Когда выдан", "15.09.2000");
+        sendAppPage.getFillField("Дата выдачи", "15.09.2000");
         sendAppPage.getFillField("Кем выдан", "отделом УФМС России");
 
         sendAppPage.sendButton.click();
