@@ -75,7 +75,7 @@ public class SendAppPage extends BasePage {
             if ("Дата рождения страхователя".equals(fieldName)) { fillField(birthDate, value); pageContainer.click();}
             if ("Серия паспорта".equals(fieldName)) { fillField(passportSeries, value); }
             if ("Номер паспорта".equals(fieldName)) { fillField(passportNumber, value); }
-            if ("Когда выдан".equals(fieldName)) { fillField(documentDate, value); pageContainer.click();}
+            if ("Дата выдачи".equals(fieldName)) { fillField(documentDate, value); pageContainer.click();}
             if ("Фамилия страхователя".equals(fieldName)) { fillField(lastName, value); }
             if ("Кем выдан".equals(fieldName)) { fillField(documentIssue, value); }
         } catch (Exception e) {
